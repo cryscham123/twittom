@@ -1,0 +1,84 @@
+@import "../extends";
+@import "../variables";
+
+.twittForm {
+  position: relative;
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: $gap;
+  background-color: $black;
+  padding: $gap;
+  border-radius: 0 0 10px 10px;
+  &__preview {
+    position: absolute;
+    top: -11rem;
+    left: 0.7rem;
+    overflow: hidden;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    transition: 0.2s ease-in-out;
+    &__img {
+      height: 150px;
+      width: 150px;
+    }
+    &__cancle {
+      @extend %button;
+      text-align: right;
+      padding: 0 0.3em;
+      width: 100%;
+      background-color: $black;
+      color: $main;
+      transition: 0.2s ease-in-out;
+      &:hover {
+        color: red;
+      }
+    }
+  }
+  &__file {
+    font-size: 1rem;
+    cursor: pointer;
+    color: $white;
+    transition: 0.2s ease-in-out;
+    &:hover {
+      color: $main;
+    }
+  }
+  &__message {
+    background-color: $white;
+    border-radius: 40px;
+    padding: 0.2em 0.8em;
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    column-gap: $gap;
+    &__text {
+      @extend %input;
+      width: 100%;
+      padding: 0;
+      color: $black;
+      font-size: 1rem;
+    }
+    &__submit {
+      @extend %button;
+      font-size: 1rem;
+      float: right;
+      transition: 0.2s ease-in-out;
+      &:hover {
+        color: $main;
+      }
+    }
+  }
+  &__error {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: red;
+    position: absolute;
+    top: -20px;
+    left: 49px;
+    opacity: 0;
+    transition: 0.2s ease-in-out;
+  }
+}

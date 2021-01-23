@@ -1,0 +1,19 @@
+@import "../../components/extends";
+@import "../../components/variables";
+
+.homeGrid {
+  display: grid;
+  grid-template-rows: 1fr min-content;
+}
+.twitts {
+  background-color: $white;
+  padding: $gap;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 5px;
+    background-color: gray;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $black;
+  }
+}

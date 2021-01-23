@@ -1,0 +1,16 @@
+@import "../../components/extends";
+@import "../../components/variables";
+
+.socialLogin {
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  gap: $gap;
+  justify-content: center;
+  margin-top: 2em;
+  &__google {
+    @extend %inputBtn;
+  }
+  &__github {
+    @extend %inputBtn;
+  }
+}

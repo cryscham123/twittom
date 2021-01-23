@@ -1,0 +1,20 @@
+@import "../variables";
+
+.nav {
+  padding: 1em $gap;
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  background-color: $black;
+  justify-content: space-between;
+  border-radius: 10px 10px 0 0;
+  width: 100%;
+  &__nav {
+    text-decoration: none;
+    color: $white;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+    &:hover {
+      color: $main;
+    }
+  }
+}

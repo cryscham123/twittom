@@ -1,0 +1,92 @@
+@import "../../components/extends";
+@import "../../components/variables";
+
+.login {
+  display: grid;
+  grid-auto-columns: min-content;
+  grid-template-rows: repeat(4, min-content);
+  justify-content: center;
+  height: 100vh;
+  row-gap: 0.8em;
+  align-content: center;
+  background: url(../../image/authBackgroundImage.jfif) no-repeat;
+  background-size: cover;
+  box-shadow: inset 20em 50em rgba(0, 0, 0, 0.6);
+  &__title {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    padding-bottom: 0.2em;
+    width: min-content;
+    border-bottom: 3px solid $main;
+  }
+  &__Form {
+    display: grid;
+    grid-template-rows: repeat(3, min-content);
+    row-gap: 0.8em;
+    align-content: center;
+    &__email {
+      color: $white;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid $main;
+      &__icon {
+        background-color: transparent;
+      }
+      &__input {
+        @extend %input;
+      }
+    }
+    &__password {
+      color: $white;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid $main;
+      transition: 0.2s ease-in-out;
+      margin-bottom: 1em;
+      &__icon {
+        background-color: transparent;
+      }
+      &__input {
+        @extend %input;
+      }
+    }
+    &__error {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: red;
+      font-size: 0.8rem;
+      font-weight: bold;
+      white-space: nowrap;
+      transition: 0.2s ease-in-out;
+    }
+    &__submit {
+      @extend %inputBtn;
+    }
+  }
+  &__control {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    justify-content: space-between;
+    &__toggle {
+      @extend %button;
+      color: $white;
+      font-size: 0.7rem;
+      transition: 0.2s ease-in-out;
+      &:hover {
+        color: $main;
+      }
+    }
+    &__find {
+      @extend %button;
+      color: $white;
+      font-size: 0.7rem;
+      transition: 0.2s ease-in-out;
+      &:hover {
+        color: $main;
+      }
+    }
+  }
+}
