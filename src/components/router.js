@@ -4,14 +4,13 @@ import Auth from '../routes/auth/auth';
 import Home from '../routes/home/home';
 import Nav from "./nav/nav";
 import Profile from "../routes/profile/profile";
-import "./router.scss";
 
 const Approuter = ({refreshUser,isLoggedIn,userobj}) => {
     return (
         <Router>
             <Switch>
                 {isLoggedIn ? (
-                    <main className="main">
+                    <>
                         <Nav userobj={userobj} />
                         <Route exact path="/">
                             <Home userobj={userobj} />
@@ -19,7 +18,7 @@ const Approuter = ({refreshUser,isLoggedIn,userobj}) => {
                         <Route path="/profile">
                             <Profile refreshUser={refreshUser} userobj={userobj} />
                         </Route>
-                    </main>
+                    </>
                      ) : (
                         <Route exact path="/">
                             <Auth />

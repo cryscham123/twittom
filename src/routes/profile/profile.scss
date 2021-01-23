@@ -5,9 +5,11 @@
   background-color: $white;
   display: grid;
   grid-template-rows: repeat(3, max-content);
+  justify-items: center;
   align-content: space-between;
   row-gap: $gap;
-  border-radius: 0 0 10px 10px;
+  padding-top: 3.3rem;
+  height: 100vh;
   &__state {
     display: flex;
     align-items: center;
@@ -30,7 +32,7 @@
     background-color: $black;
     color: $white;
     padding: 1em;
-    border-radius: 0 0 10px 10px;
+    width: 100%;
     transition: 0.2s ease-in-out;
     &:hover {
       color: $main;

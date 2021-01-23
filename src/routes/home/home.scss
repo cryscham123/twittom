@@ -4,6 +4,9 @@
 .homeGrid {
   display: grid;
   grid-template-rows: 1fr min-content;
+  background-color: $main;
+  padding-top: 3.3rem;
+  height: 100vh;
 }
 .twitts {
   background-color: $white;
