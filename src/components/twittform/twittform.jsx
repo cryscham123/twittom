@@ -11,7 +11,7 @@ const Twittform = ({ userobj }) => {
     const onSubmit = async(event) => {
         event.preventDefault();
         if (twitt === "") {
-            setError("At Least 1 Type...");
+            setError("At Least 1 Letter...");
             errorRef.current.style.opacity = 1;
             return;
         }
@@ -23,6 +23,7 @@ const Twittform = ({ userobj }) => {
         }
         const twittobj = {
             text: twitt,
+            displayDate: new Date().toLocaleDateString(),
             createdAt: Date.now(),
             creatorId: userobj.uid,
             creatorName: userobj.displayName,
@@ -34,7 +35,7 @@ const Twittform = ({ userobj }) => {
         setAttachment("");
         window.scroll({bottom:0,behavior:"smooth"});
     }
-    const useInput = (validator) => {
+    const useInput = (errorMessage,validator) => {
         const onChange = event => {
             const { target: { value } } = event
             let willUpdate = true;
@@ -45,7 +46,7 @@ const Twittform = ({ userobj }) => {
                 setTwitt(value);
                 errorRef.current.style.opacity = 0;
             } else {
-                setError("Less Than 100 Texts Please...");
+                setError(errorMessage);
                 errorRef.current.style.opacity = 1;
             }
         }
@@ -63,7 +64,7 @@ const Twittform = ({ userobj }) => {
     }
     const onclearAttachment = () => setAttachment("");
     const maxLen = (value) => value.length <= 100;
-    const ulala = useInput(maxLen);
+    const ulala = useInput("Less Than 100 Texts Please...",maxLen);
     return (
         <form className="twittForm" onSubmit={onSubmit}>
             {attachment &&
