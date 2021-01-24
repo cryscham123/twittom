@@ -17,7 +17,7 @@ const Twitts = ({ twitt, userobj }) => {
         setEditting(false);
     }
     const onDelete = async() => {
-        const ok = window.confirm("are you sure to delet?");
+        const ok = window.confirm("Are you sure to delete?");
         if (ok) {
             await dbServie.doc(`twittom/${twitt.id}`).delete();
             await storageService.refFromURL(twitt.attachmentUrl).delete();
@@ -45,26 +45,27 @@ const Twitts = ({ twitt, userobj }) => {
             </div>
             {twitt.attachmentUrl && <img className="twitt__img" src={twitt.attachmentUrl} width="50px" height="50px" />}
             <div className="twitt__btn">
+            {editting ?
+                    <form className="twitt__editForm" onSubmit={onModify}>
+                        <input
+                            className="twitt__editForm__text"
+                            type="text"
+                            placeholder="Less than 100 texts..."
+                            onChange={getEdit}
+                            value={newTwitt}
+                            required></input>
+                        <button className="twitt__editForm__submit" type="submit">
+                            <i className="fas fa-edit"></i>
+                        </button>
+                    </form>
+                    :<></>}
                 <button className="twitt__btn__good">
                     <i className="fas fa-thumbs-up"></i>
                 </button>
                 <button className="twitt__btn__bad">
                     <i className="fas fa-thumbs-down"></i>
                 </button>
-                <button className="twitt__btn__comment">
-                    <i className="fas fa-comment-alt"></i>
-                </button>
             </div>
-                    {
-                        editting ?
-                    <form className="twitt__editForm" onSubmit={onModify}>
-                        <input className="twitt__editForm__text" type="text" placeholder="Less than 120 texts..." onChange={getEdit} value={newTwitt} required></input>
-                        <input className="twitt__editForm__submit" type="submit" value="Edit"></input>
-                    </form>
-                    :
-                    <>
-                    </>
-                    }
         </li>
     );
 };

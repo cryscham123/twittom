@@ -5,10 +5,10 @@ import { dbServie } from '../../fbase';
 import "./home.scss";
 import Twittform from 'components/twittform/twittform';
 
-const Home = ({userobj}) => {
+const Home = ({ userobj }) => {
     const [twitts, setTwitts] = useState([]);
     useEffect(() => {
-        dbServie.collection("twittom").onSnapshot((snapshot) => {
+        dbServie.collection("twittom").orderBy("createdAt").onSnapshot((snapshot) => {
             const twittArray = snapshot.docs.map(doc => ({
                 id: doc.id,
                 ...doc.data()

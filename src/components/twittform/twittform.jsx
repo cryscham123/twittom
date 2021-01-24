@@ -4,10 +4,17 @@ import { dbServie, storageService } from "fbase";
 import "./twittform.scss";
 
 const Twittform = ({ userobj }) => {
+    const errorRef = useRef();
     const [attachment, setAttachment] = useState("");
     const [twitt, setTwitt] = useState("");
+    const [error, setError] = useState("");
     const onSubmit = async(event) => {
         event.preventDefault();
+        if (twitt === "") {
+            setError("At Least 1 Type...");
+            errorRef.current.style.opacity = 1;
+            return;
+        }
         let attachmentUrl = "";
         if (attachment !== "") {
             const attachmentRef = storageService.ref().child(`${userobj.uid}/${uuidv4()}`);
@@ -25,9 +32,9 @@ const Twittform = ({ userobj }) => {
         await dbServie.collection("twittom").add(twittobj);
         setTwitt("");
         setAttachment("");
+        window.scroll({bottom:0,behavior:"smooth"});
     }
     const useInput = (validator) => {
-        const error = useRef();
         const onChange = event => {
             const { target: { value } } = event
             let willUpdate = true;
@@ -36,12 +43,13 @@ const Twittform = ({ userobj }) => {
             }
             if (willUpdate) {
                 setTwitt(value);
-                error.current.style.opacity = 0;
+                errorRef.current.style.opacity = 0;
             } else {
-                error.current.style.opacity = 1;
+                setError("Less Than 100 Texts Please...");
+                errorRef.current.style.opacity = 1;
             }
         }
-        return { onChange, error };
+        return { onChange };
     }
     const onFileChange = event => {
         const { target: { files } } = event;
@@ -54,7 +62,7 @@ const Twittform = ({ userobj }) => {
         }
     }
     const onclearAttachment = () => setAttachment("");
-    const maxLen = (value) => value.length <= 120;
+    const maxLen = (value) => value.length <= 100;
     const ulala = useInput(maxLen);
     return (
         <form className="twittForm" onSubmit={onSubmit}>
@@ -72,7 +80,7 @@ const Twittform = ({ userobj }) => {
                 <input
                     className="twittForm__message__text"
                     type="text"
-                    placeholder="Less than 120 texts..."
+                    placeholder="Less than 100 texts..."
                     maxLength={120}
                     onChange={ulala.onChange}
                     value={twitt}
@@ -85,7 +93,7 @@ const Twittform = ({ userobj }) => {
                     <i className="fas fa-paper-plane"></i>
                 </button>
             </div>
-            <span className="twittForm__error" ref={ulala.error}>Less Than 120 Texts Please...</span>
+            <span className="twittForm__error" ref={errorRef}>{error}</span>
         </form>
     );
 };

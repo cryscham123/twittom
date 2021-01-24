@@ -12,8 +12,8 @@
   padding: $gap;
   &__preview {
     position: absolute;
-    top: -11rem;
-    left: 0.7rem;
+    top: -12rem;
+    left: 0.8rem;
     overflow: hidden;
     justify-self: center;
     display: flex;
@@ -22,15 +22,14 @@
     transition: 0.2s ease-in-out;
     &__img {
       height: 150px;
-      width: 150px;
+      width: auto;
     }
     &__cancle {
       @extend %button;
-      text-align: right;
-      padding: 0 0.3em;
-      width: 100%;
-      background-color: $black;
-      color: $main;
+      position: relative;
+      top: 20px;
+      left: -5px;
+      color: $black;
       transition: 0.2s ease-in-out;
       &:hover {
         color: red;

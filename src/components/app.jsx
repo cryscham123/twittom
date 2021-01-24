@@ -12,7 +12,7 @@ function App() {
       if (user) {
         setIsLoggedIn(true);
         setUserobj({
-          displayName: user.displayName || "Visitor",
+          displayName: user.displayName || `Visitor.${user.uid.slice(0,3)}`,
           uid: user.uid,
           photoURL: user.photoURL || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6affXwdu79nsCKnaRYrbRuY8DKGw52nOaXw&usqp=CAU",
           updateProfile: (args) => user.updateProfile(args),

@@ -2,7 +2,6 @@
 @import "../variables";
 
 .twitt {
-  position: relative;
   @extend %list;
   display: grid;
   grid-template-rows: repeat(4, max-content);
@@ -29,6 +28,7 @@
       &__edit {
         @extend %button;
         font-size: 1rem;
+        font-weight: bold;
         transition: 0.2s ease-in-out;
         &:hover {
           color: $main;
@@ -46,27 +46,28 @@
   }
   &__twitt {
     display: grid;
-    grid-template-columns: 20rem;
     padding: $gap;
     background-color: $main;
     border-radius: 0 15px 15px 15px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     &__text {
       font-size: 1rem;
+      width: 100%;
       font-weight: bold;
       color: $black;
       white-space: pre-wrap;
     }
   }
   &__img {
-    width: 300px;
-    height: 300px;
+    width: auto;
+    height: 200px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-    justify-self: flex-end;
+    justify-self: flex-start;
   }
   &__btn {
+    position: relative;
     display: grid;
-    grid-template-columns: repeat(3, min-content);
+    grid-template-columns: repeat(2, min-content);
     column-gap: $gap;
     justify-content: flex-end;
     &__good {
@@ -87,30 +88,6 @@
         color: $main;
       }
     }
-    &__comment {
-      @extend %button;
-      font-size: 0.8rem;
-      color: rgba(0, 0, 0, 0.5);
-      transition: 0.2s ease-in-out;
-      &:hover {
-        color: $main;
-      }
-    }
-  }
-  &__editForm {
-    position: absolute;
-    top: 3.5em;
-    left: 0.8em;
-    &__text {
-      font-size: 1rem;
-      outline: none;
-      border: none;
-      background-color: $main;
-    }
-    &__submit {
-      font-size: 1rem;
-      @extend %button;
-    }
   }
   &::after {
     content: "";
@@ -119,5 +96,34 @@
     height: 2px;
     background-color: rgba(0, 0, 0, 0.5);
     margin-bottom: $gap;
+  }
+}
+
+.twitt__editForm {
+  position: absolute;
+  top: -5px;
+  left: 15px;
+  background-color: $black;
+  padding: 0.2em $gap;
+  border-radius: 40px;
+  width: 20rem;
+  display: flex;
+  &__text {
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    background-color: $black;
+    width: 100%;
+    color: $white;
+  }
+  &__submit {
+    @extend %button;
+    font-size: 1rem;
+    color: $white;
+    margin-left: $gap;
+    transition: 0.2s ease-in-out;
+    &:hover {
+      color: $main;
+    }
   }
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Auth from '../routes/auth/auth';
 import Home from '../routes/home/home';
