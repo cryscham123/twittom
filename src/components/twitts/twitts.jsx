@@ -27,9 +27,9 @@ const Twitts = ({ twitt, userobj }) => {
     return (
         <li className="twitt">
             <div className="twitt__profile">
-                <img className="twitt__profile__img" src={twitt.creatorPhoto}/>
+                <img className="twitt__profile__img" src={twitt.creatorPhoto} alt={userobj.uid} />
                 <p className="twitt__profile__name">{twitt.creatorName}</p>
-                {twitt.creatorId == userobj.uid &&
+                {twitt.creatorId === userobj.uid &&
                             <div className="twitt__profile__control">
                                 <button className="twitt__profile__control__edit" onClick={toggleEditting}>
                                     <i className="fas fa-edit"></i>
@@ -43,7 +43,7 @@ const Twitts = ({ twitt, userobj }) => {
             <div className="twitt__twitt">
                 <span className="twitt__twitt__text">{twitt.text}</span>
             </div>
-            {twitt.attachmentUrl && <img className="twitt__img" src={twitt.attachmentUrl} width="50px" height="50px" />}
+            {twitt.attachmentUrl && <img className="twitt__img" src={twitt.attachmentUrl} alt={twitt.createdAt} />}
             <div className="twitt__btn">
             {editting ?
                     <form className="twitt__editForm" onSubmit={onModify}>

@@ -102,11 +102,10 @@
 .twitt__editForm {
   position: absolute;
   top: -5px;
-  left: 15px;
   background-color: $black;
   padding: 0.2em $gap;
-  border-radius: 40px;
-  width: 20rem;
+  border-radius: 0 10px 10px 10px;
+  width: 18rem;
   display: flex;
   &__text {
     font-size: 1rem;

@@ -1,66 +1,86 @@
 @import "../../components/extends";
 @import "../../components/variables";
 
+.auth {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 6fr;
+}
+.welcome {
+  font-size: 3rem;
+  font-weight: bold;
+  color: $black;
+  letter-spacing: 0.1em;
+  align-self: flex-end;
+  justify-self: center;
+}
 .login {
   display: grid;
   grid-auto-columns: min-content;
-  grid-template-rows: repeat(4, min-content);
+  grid-template-rows: repeat(6, min-content);
   justify-content: center;
-  height: 100vh;
   row-gap: 0.8em;
-  align-content: center;
-  background: url(../../image/authBackgroundImage.jfif) no-repeat;
-  background-size: cover;
-  box-shadow: inset 20em 50em rgba(0, 0, 0, 0.6);
+  background-color: $white;
+  padding: $gap;
+  padding-top: 3em;
   &__title {
-    color: white;
+    color: $black;
     font-size: 2rem;
     font-weight: bold;
     padding-bottom: 0.2em;
     width: min-content;
     border-bottom: 3px solid $main;
   }
+  &__error {
+    position: relative;
+    top: 33%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: red;
+    font-size: 0.8rem;
+    font-weight: bold;
+    white-space: pre-wrap;
+    opacity: 0;
+    transition: 0.2s ease-in-out;
+  }
   &__Form {
     display: grid;
     grid-template-rows: repeat(3, min-content);
     row-gap: 0.8em;
     align-content: center;
+    margin-top: 2.2em;
     &__email {
-      color: $white;
+      color: $black;
       display: flex;
       align-items: center;
       border-bottom: 1px solid $main;
       &__icon {
         background-color: transparent;
+        transition: 0.2s ease-in-out;
       }
       &__input {
         @extend %input;
+      }
+      &:focus-within &__icon {
+        color: $main;
       }
     }
     &__password {
-      color: $white;
+      color: $black;
       display: flex;
       align-items: center;
       border-bottom: 1px solid $main;
       transition: 0.2s ease-in-out;
-      margin-bottom: 1em;
-      &__icon {
-        background-color: transparent;
-      }
       &__input {
         @extend %input;
       }
-    }
-    &__error {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: red;
-      font-size: 0.8rem;
-      font-weight: bold;
-      white-space: nowrap;
-      transition: 0.2s ease-in-out;
+      &__icon {
+        background-color: transparent;
+        transition: 0.2s ease-in-out;
+      }
+      &:focus-within &__icon {
+        color: $main;
+      }
     }
     &__submit {
       @extend %inputBtn;
@@ -72,7 +92,7 @@
     justify-content: space-between;
     &__toggle {
       @extend %button;
-      color: $white;
+      color: $black;
       font-size: 0.7rem;
       transition: 0.2s ease-in-out;
       &:hover {
@@ -81,7 +101,7 @@
     }
     &__find {
       @extend %button;
-      color: $white;
+      color: $black;
       font-size: 0.7rem;
       transition: 0.2s ease-in-out;
       &:hover {
@@ -89,4 +109,10 @@
       }
     }
   }
+}
+.creator {
+  font-size: 0.5rem;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  margin-top: 2.2rem;
 }

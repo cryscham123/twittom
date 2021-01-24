@@ -71,10 +71,10 @@ const Twittform = ({ userobj }) => {
                     <button className="twittForm__preview__cancle" onClick={onclearAttachment}>
                         <i className="fas fa-times"></i>
                     </button>
-                    <img className="twittForm__preview__img" src={attachment} />
+                <img className="twittForm__preview__img" src={attachment} alt={userobj.uid}/>
                 </div>
             }
-            <label for="fileForm" className="twittForm__file"><i className="fas fa-paperclip"></i></label>
+            <label htmlFor="fileForm" className="twittForm__file"><i className="fas fa-paperclip"></i></label>
             <input id="fileForm" style={{display:"none"}} type="file" accept="image/*" onChange={onFileChange} />
             <div className="twittForm__message">
                 <input

@@ -26,9 +26,8 @@ function App() {
   const refreshUser = () => {
     const user = authService.currentUser;
     setUserobj({
+      ...userobj,
       displayName: user.displayName,
-      uid: user.uid,
-      photoURL: user.photoURL ,
       updateProfile: (args) => user.updateProfile(args),
     });
   }
