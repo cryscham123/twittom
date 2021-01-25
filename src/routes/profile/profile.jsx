@@ -34,7 +34,7 @@ const Profile = ({refreshUser,userobj}) => {
         <div className="profile">
             <div className="profile__state">
                 <img className="profile__state__img" src={userobj.photoURL} alt={userobj.uid}/>
-                <p className="profile__state__text">{userobj.displayName}</p>
+                <p className="profile__state__text">Hi, {userobj.displayName}</p>
                 <form className="profile__updateProfile" onSubmit={onSubmit}>
                     <input className="profile__updateProfile__input" placeholder="Less than 11 letters..."type="text" onChange={onChange} value={newDisplayName} />
                     <button className="profile__updateProfile__submit" type="submit" value="Update profile">

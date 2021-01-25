@@ -28,12 +28,15 @@ const Twittform = ({ userobj }) => {
             creatorId: userobj.uid,
             creatorName: userobj.displayName,
             creatorPhoto: userobj.photoURL,
+            goods: [],
+            bads: [],
+            isEditted: false,
             attachmentUrl
         }
         await dbServie.collection("twittom").add(twittobj);
         setTwitt("");
         setAttachment("");
-        window.scroll({bottom:0,behavior:"smooth"});
+        console.log(window.scroll());
     }
     const useInput = (errorMessage,validator) => {
         const onChange = event => {

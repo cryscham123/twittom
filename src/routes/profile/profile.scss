@@ -53,6 +53,7 @@
   &__logout {
     @extend %button;
     font-size: 1rem;
+    font-weight: bold;
     background-color: $black;
     color: $white;
     padding: 1em;

@@ -6,13 +6,19 @@ const Twitts = ({ twitt, userobj }) => {
     const [editting, setEditting] = useState(false);
     const [newTwitt, setNewTwitt] = useState(twitt.text);
     const [Merror, setMerror] = useState("");
+    const goodRef = useRef();
+    const badRef = useRef();
     const MerrorRef = useRef();
     const onModify = async(event) => {
         event.preventDefault();
-        await dbServie.doc(`twittom/${twitt.id}`).update({
-            text: newTwitt
-        });
-        setEditting(false);
+        const Mok = window.confirm("Are you sure to edit?");
+        if (Mok) {
+            await dbServie.doc(`twittom/${twitt.id}`).update({
+                text: newTwitt,
+                isEditted: true,
+            });
+            setEditting(false);
+        }
     }
     const useInput = (errorMessage, validator) => {
         const getEdit = event => {
@@ -31,13 +37,45 @@ const Twitts = ({ twitt, userobj }) => {
         }
         return { getEdit };
     }
+    const goodBtn = async () => {
+        let goods
+        if (!twitt.goods.includes(userobj.uid)) {
+            goodRef.current.style.color = "#1b9cfc";
+            goods = [...twitt.goods, userobj.uid]
+            await dbServie.doc(`twittom/${twitt.id}`).update({
+                goods
+            });
+        } else {
+            goodRef.current.style.color = "rgba(0, 0, 0, 0.5)";
+            goods = [...twitt.goods].filter(item => item !== userobj.uid);
+            await dbServie.doc(`twittom/${twitt.id}`).update({
+                goods
+            });
+        }
+    }
+    const badBtn = async () => {
+        let bads = [...twitt.bads, userobj.uid]
+        if (!twitt.bads.includes(userobj.uid)) {
+            badRef.current.style.color = "#1b9cfc";
+            bads = [...twitt.bads, userobj.uid]
+            await dbServie.doc(`twittom/${twitt.id}`).update({
+                bads
+            });
+        } else {
+            badRef.current.style.color = "rgba(0, 0, 0, 0.5)";
+            bads = [...twitt.bads].filter(item => item !== userobj.uid);
+            await dbServie.doc(`twittom/${twitt.id}`).update({
+                bads
+            });
+        }
+    }
     const maxLen = (value) => value.length <= 100;
     const heheh = useInput("Less Than 100 Texts Please...",maxLen)
     const onDelete = async() => {
         const ok = window.confirm("Are you sure to delete?");
         if (ok) {
             await dbServie.doc(`twittom/${twitt.id}`).delete();
-            await storageService.refFromURL(twitt.attachmentUrl).delete();
+            twitt.attachmentUrl && await storageService.refFromURL(twitt.attachmentUrl).delete();
         }
     }
     const toggleEditting = () => setEditting(prev => !prev);
@@ -79,14 +117,29 @@ const Twitts = ({ twitt, userobj }) => {
                         </form>
                         <span className="Merror" ref={MerrorRef}>{Merror}</span>
                     </div>
-                    :<></>}
-                <button className="twitt__btn__good">
-                    <i className="fas fa-thumbs-up"></i>
-                </button>
-                <button className="twitt__btn__bad">
-                    <i className="fas fa-thumbs-down"></i>
-                </button>
+                    : <></>}
+                <div className="twitt__btn__good">
+                    <button
+                        ref={goodRef}
+                        className="twitt__btn__good__btn"
+                        onClick={goodBtn}
+                        >
+                        <i className="fas fa-thumbs-up"></i>
+                    </button>
+                    <span className="twitt__btn__good__count">{twitt.goods.length}</span>
+                </div>
+                <div className="twitt__btn__bad">
+                    <button
+                        ref={badRef}
+                        className="twitt__btn__bad__btn"
+                        onClick={badBtn}
+                        >
+                        <i className="fas fa-thumbs-down"></i>
+                    </button>
+                    <span className="twitt__btn__bad__count">{twitt.bads.length}</span>
+                </div>
             </div>
+            {twitt.isEditted && <span className="twitt__editmessage">(be edited)</span>}
         </li>
     );
 };

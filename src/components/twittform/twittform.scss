@@ -2,7 +2,9 @@
 @import "../variables";
 
 .twittForm {
-  position: relative;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   display: grid;
   grid-template-columns: min-content 1fr;
   justify-content: center;

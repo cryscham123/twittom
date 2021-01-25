@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Approuter from "./router";
 import {authService} from "../fbase"
 import "./app.scss";
+import Loading from './loading/loading';
 
 function App() {
   const [init, setInit] = useState(false);
@@ -12,7 +13,7 @@ function App() {
       if (user) {
         setIsLoggedIn(true);
         setUserobj({
-          displayName: user.displayName || `Visitor.${user.uid.slice(0,3)}`,
+          displayName: user.displayName || `Visitor.${user.uid.slice(0, 3)}`,
           uid: user.uid,
           photoURL: user.photoURL || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6affXwdu79nsCKnaRYrbRuY8DKGw52nOaXw&usqp=CAU",
           updateProfile: (args) => user.updateProfile(args),
@@ -32,9 +33,12 @@ function App() {
     });
   }
   return (
-    <>
-      {init ? <Approuter refreshUser={refreshUser} isLoggedIn={isLoggedIn} userobj={userobj} /> : "initializing..."}
-      </>
+  <>
+    {
+      init?<Approuter refreshUser = { refreshUser } isLoggedIn = { isLoggedIn } userobj = { userobj } />
+      : <Loading />
+      }
+  </>
   );
 }
 
