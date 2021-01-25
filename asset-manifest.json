@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/twittom/static/css/main.e5d3453c.chunk.css",
-    "main.js": "/twittom/static/js/main.e5ac54f2.chunk.js",
-    "main.js.map": "/twittom/static/js/main.e5ac54f2.chunk.js.map",
+    "main.css": "/twittom/static/css/main.84795ba1.chunk.css",
+    "main.js": "/twittom/static/js/main.41a42d5c.chunk.js",
+    "main.js.map": "/twittom/static/js/main.41a42d5c.chunk.js.map",
     "runtime-main.js": "/twittom/static/js/runtime-main.89c0ee78.js",
     "runtime-main.js.map": "/twittom/static/js/runtime-main.89c0ee78.js.map",
-    "static/js/2.97cb9881.chunk.js": "/twittom/static/js/2.97cb9881.chunk.js",
-    "static/js/2.97cb9881.chunk.js.map": "/twittom/static/js/2.97cb9881.chunk.js.map",
+    "static/js/2.cfa6adc7.chunk.js": "/twittom/static/js/2.cfa6adc7.chunk.js",
+    "static/js/2.cfa6adc7.chunk.js.map": "/twittom/static/js/2.cfa6adc7.chunk.js.map",
     "index.html": "/twittom/index.html",
-    "static/css/main.e5d3453c.chunk.css.map": "/twittom/static/css/main.e5d3453c.chunk.css.map",
-    "static/js/2.97cb9881.chunk.js.LICENSE.txt": "/twittom/static/js/2.97cb9881.chunk.js.LICENSE.txt"
+    "static/css/main.84795ba1.chunk.css.map": "/twittom/static/css/main.84795ba1.chunk.css.map",
+    "static/js/2.cfa6adc7.chunk.js.LICENSE.txt": "/twittom/static/js/2.cfa6adc7.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.89c0ee78.js",
-    "static/js/2.97cb9881.chunk.js",
-    "static/css/main.e5d3453c.chunk.css",
-    "static/js/main.e5ac54f2.chunk.js"
+    "static/js/2.cfa6adc7.chunk.js",
+    "static/css/main.84795ba1.chunk.css",
+    "static/js/main.41a42d5c.chunk.js"
   ]
 }
